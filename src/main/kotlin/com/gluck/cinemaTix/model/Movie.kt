@@ -1,5 +1,6 @@
 package com.gluck.cinemaTix.model
 
+import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -24,6 +25,6 @@ class Movie(
     @Column(nullable = false)
     val genre: String,
 
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(mappedBy = "movie", cascade = [CascadeType.ALL], orphanRemoval = true)
     val showtimes: MutableList<Showtime>
 )

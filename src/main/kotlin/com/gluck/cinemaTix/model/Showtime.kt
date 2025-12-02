@@ -5,6 +5,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
@@ -16,10 +17,15 @@ class Showtime(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
+
     @ManyToOne
-    val movieId: Movie,
+    @JoinColumn(name = "movie_id", nullable = false)
+    val movie: Movie,
+
     @ManyToOne
-    val roomId: Room,
+    @JoinColumn(name = "room_id", nullable = false)
+    val room: Room,
+
     @Column(nullable = false)
     val startTime: LocalDateTime
 )
