@@ -10,7 +10,7 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 
 @Entity
-@Table
+@Table(name = "rooms")
 class Room(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,5 +23,5 @@ class Room(
     val capacity: Int,
 
     @OneToMany(mappedBy = "room", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val seats: MutableList<Seat>
+    val seats: MutableList<Seat> = mutableListOf()
 )

@@ -12,7 +12,7 @@ import jakarta.persistence.Table
 import java.time.LocalDateTime
 
 @Entity
-@Table
+@Table(name = "showtimes")
 class Showtime(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

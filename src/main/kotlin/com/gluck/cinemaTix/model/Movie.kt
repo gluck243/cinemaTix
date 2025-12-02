@@ -10,7 +10,7 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 
 @Entity
-@Table
+@Table(name = "movies")
 class Movie(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +26,5 @@ class Movie(
     val genre: String,
 
     @OneToMany(mappedBy = "movie", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val showtimes: MutableList<Showtime>
+    val showtimes: MutableList<Showtime> = mutableListOf()
 )

@@ -12,7 +12,7 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 
 @Entity
-@Table
+@Table(name = "bookings")
 class Booking(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
