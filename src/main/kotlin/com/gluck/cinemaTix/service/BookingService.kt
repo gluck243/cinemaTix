@@ -19,7 +19,7 @@ class BookingService(
     fun bookTicket(request: BookingRequest): Booking {
         val showtime = showtimeRepository.findById(request.showTimeId).orElseThrow { InvalidBookingException("Showtime Id does not match available showtime details") }
         val seat = seatRepository.findById(request.seatId).orElseThrow { InvalidBookingException("Seat ID does not match available showtime details") }
-        if (seat.room.id == showtime.room.id)
+        if (seat.room.id != showtime.room.id)
             throw InvalidBookingException("Seat is not found")
 
 
